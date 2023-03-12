@@ -4,13 +4,13 @@ import (
 	"net/http"
 )
 
-type HttpInterceptor interface {
+type IHttpInterceptor interface {
 	Intercept(h http.HandlerFunc) http.HandlerFunc
 	preHandle(w http.ResponseWriter, r *http.Request) error
 	postHandle(w http.ResponseWriter, r *http.Request) error
 }
 
-func Intercept(targetHandler http.HandlerFunc, interceptors ...HttpInterceptor) http.HandlerFunc {
+func Intercept(targetHandler http.HandlerFunc, interceptors ...IHttpInterceptor) http.HandlerFunc {
 	totalMiddleware := len(interceptors)
 	if totalMiddleware == 0 {
 		return targetHandler
@@ -25,5 +25,4 @@ func Intercept(targetHandler http.HandlerFunc, interceptors ...HttpInterceptor) 
 
 		return chainedInterceptor
 	}
-
 }

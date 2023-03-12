@@ -1,15 +1,14 @@
 package main
 
 import (
+	"context"
 	"log"
 	"os"
 	"runtime/pprof"
 	"time"
 
-	"github.com/natepboat/go-rest-api/api"
-	"github.com/natepboat/go-rest-api/interceptor"
-	gorouter "github.com/natepboat/go-router"
-	"github.com/natepboat/go-router/httpMethod"
+	"github.com/natepboat/go-rest-api/bean"
+	"github.com/natepboat/go-rest-api/config"
 )
 
 func init() {
@@ -22,20 +21,15 @@ func init() {
 		pprof.WriteHeapProfile(memprof)
 		memprof.Close()
 	}()
+
 }
 
 func main() {
-	authInterceptor := interceptor.NewAuthInterceptor()
-	metricInterceptor := interceptor.NewMetricInterceptor()
+	appContext := context.Background()
+	app := config.ConfigEnv(appContext)
 
-	r := gorouter.NewRouter(nil, nil)
+	beanContext := bean.InitBeanContext()
+	server := config.ConfigServer(app, beanContext)
 
-	r.AddRoute(httpMethod.GET, "/", interceptor.Intercept(api.Home, metricInterceptor))
-	r.AddRoute(httpMethod.GET, "/user/:id", api.GetUser)
-	r.AddRoute(httpMethod.GET, "/v2/user/:id", interceptor.Intercept(api.GetUser, authInterceptor, metricInterceptor))
-	server, err := r.NewServer()
-	if err != nil {
-		log.Fatalln("Cannot create route server", err)
-	}
 	log.Fatalln(server.ListenAndServe())
 }

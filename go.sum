@@ -1,10 +1,10 @@
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/google/uuid v1.3.0 h1:t6JiXgmwXMjEs8VusXIJk2BXHsn+wx8BZdTaoZ5fu7I=
 github.com/google/uuid v1.3.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
-github.com/natepboat/go-app-env v1.0.1 h1:W9vuQTNasVTuuLhdE4ZRNT3xfIu10x00OXrW4ups8lQ=
-github.com/natepboat/go-app-env v1.0.1/go.mod h1:9Ih64ciVSJ0rXJxUvHSHew4ht/ZQLgwWJpzjrzidL0Q=
-github.com/natepboat/go-router v1.0.1 h1:29KyYZuDQyKTQN+Un9ne741FYgK/BG0Ph9c5OPC6+1M=
-github.com/natepboat/go-router v1.0.1/go.mod h1:2xNtMgVVgurteklhiymAFzE/zNcPdunuQp0lU+K84Nw=
+github.com/natepboat/go-app-env v1.0.5 h1:BaZS5DnwK/GhWZngQyI+V4c1uAJuvl//eE9WE4J01os=
+github.com/natepboat/go-app-env v1.0.5/go.mod h1:9Ih64ciVSJ0rXJxUvHSHew4ht/ZQLgwWJpzjrzidL0Q=
+github.com/natepboat/go-router v1.0.3 h1:aEUpqsIzhS9OrhQKB/kjbKcFR7el8COb+GhOFrRirRE=
+github.com/natepboat/go-router v1.0.3/go.mod h1:UzGE6TKBuwdfQ0y7ckTTuPhsFNFiE+5V0aPhzOvo3ow=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
-github.com/stretchr/testify v1.8.1 h1:w7B6lhMri9wdJUVmEZPGGhZzrYTPvgJArz7wNPgYKsk=
+github.com/stretchr/testify v1.8.2 h1:+h33VjcLVPDHtOdpUCuF+7gSuG3yGIftsP1YvFihtJ8=
 gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=

@@ -7,7 +7,13 @@ import (
 	"time"
 )
 
-func Home(w http.ResponseWriter, r *http.Request) {
+type StatController struct{}
+
+func NewStatController() *StatController {
+	return &StatController{}
+}
+
+func (c *StatController) Home(w http.ResponseWriter, r *http.Request) {
 	var ms runtime.MemStats
 	runtime.ReadMemStats(&ms)
 	fmt.Println("--------------------------------------")

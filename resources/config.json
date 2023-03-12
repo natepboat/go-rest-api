@@ -1,0 +1,11 @@
+{
+  "app": {
+    "name":"gin-example-local",
+    "version": "1.0"
+  },
+  "server":{
+    "port": ":9001",
+    "writeTimeout":"30s",
+    "readTimeout":"30s"
+  }
+}
