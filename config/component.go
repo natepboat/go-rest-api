@@ -11,16 +11,14 @@ import (
 )
 
 func InitComponentProvider() *provider.ComponentProvider {
-	provider := &provider.ComponentProvider{
-		ComponentMap: make(map[string]interface{}, 5),
-	}
+	provider := provider.NewComponentProvider()
 
-	provider.ComponentMap["UserRepository"] = NewUserRepository()
-	provider.ComponentMap["service.UserService"] = service.NewUserService(provider)
-	provider.ComponentMap["interceptor.AuthInterceptor"] = interceptor.NewAuthInterceptor()
-	provider.ComponentMap["interceptor.MetricInterceptor"] = interceptor.NewMetricInterceptor()
-	provider.ComponentMap["api.StatController"] = api.NewStatController()
-	provider.ComponentMap["api.UserController"] = api.NewUserController(provider)
+	provider.Add("UserRepository", NewUserRepository())
+	provider.Add("service.UserService", service.NewUserService(provider))
+	provider.Add("interceptor.AuthInterceptor", interceptor.NewAuthInterceptor())
+	provider.Add("interceptor.MetricInterceptor", interceptor.NewMetricInterceptor())
+	provider.Add("api.StatController", api.NewStatController())
+	provider.Add("api.UserController", api.NewUserController(provider))
 
 	return provider
 }
