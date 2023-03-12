@@ -4,6 +4,7 @@ import (
 	"log"
 
 	"github.com/natepboat/go-rest-api/model"
+	"github.com/natepboat/go-rest-api/provider"
 )
 
 type IUserService interface {
@@ -14,9 +15,9 @@ type UserService struct {
 	repository map[int]*model.User
 }
 
-func NewUserService(repository map[int]*model.User) *UserService {
+func NewUserService(provider *provider.ComponentProvider) *UserService {
 	return &UserService{
-		repository: repository,
+		repository: provider.Required("UserRepository").(map[int]*model.User),
 	}
 }
 

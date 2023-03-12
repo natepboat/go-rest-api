@@ -6,19 +6,19 @@ import (
 
 	goappenv "github.com/natepboat/go-app-env"
 	"github.com/natepboat/go-rest-api/api"
-	"github.com/natepboat/go-rest-api/bean"
 	"github.com/natepboat/go-rest-api/interceptor"
+	"github.com/natepboat/go-rest-api/provider"
 	gorouter "github.com/natepboat/go-router"
 	"github.com/natepboat/go-router/httpMethod"
 )
 
-func ConfigServer(app goappenv.IAppEnv, beanContext *bean.BeanContext) *http.Server {
+func ConfigServer(app goappenv.IAppEnv, provider *provider.ComponentProvider) *http.Server {
 	r := gorouter.NewRouter(app, nil)
-	authInterceptor := beanContext.RequiredBean(bean.AuthInterceptor).(interceptor.IHttpInterceptor)
-	metricInterceptor := beanContext.RequiredBean(bean.MetricInterceptor).(interceptor.IHttpInterceptor)
+	authInterceptor := provider.Required("interceptor.AuthInterceptor").(interceptor.IHttpInterceptor)
+	metricInterceptor := provider.Required("interceptor.MetricInterceptor").(interceptor.IHttpInterceptor)
 
-	s := beanContext.RequiredBean(bean.StatController).(*api.StatController)
-	u := beanContext.RequiredBean(bean.UserController).(*api.UserController)
+	s := provider.Required("api.StatController").(*api.StatController)
+	u := provider.Required("api.UserController").(*api.UserController)
 
 	r.AddRoute(httpMethod.GET, "/", interceptor.Intercept(s.Home, metricInterceptor))
 	r.AddRoute(httpMethod.GET, "/user/:id", u.GetUser)
